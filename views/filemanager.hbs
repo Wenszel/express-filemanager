@@ -3,26 +3,28 @@
     <a class="fmgr-btn" href="/deleteFilesData">Delete files data from table</a>
 </aside>
 <main>
-    <table>
-        <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>size</th>
-            <th>type</th>
-            <th>-</th>
-            <th>-</th>
-            <th>-</th>
-        </tr>
-    {{#each files}}
-    <tr>
-        <td>{{id}}</td>
-        <td>{{name}}</td>
-        <td>{{size}}</td>
-        <td>{{type}}</td>
-        <td><a class="fmgr-btn" href="/deleteFileData?id={{id}}">delete</a></td>
-        <td><a class="fmgr-btn" href="/info?id={{id}}">info</a></td>
-        <td><a class="fmgr-btn" href="/downloadFile?id={{id}}">download</a></td>
-    </tr>
-    {{/each}}
-    </table>
+    {{#if files}}
+        <table>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>size</th>
+                <th>type</th>
+                <th>-</th>
+                <th>-</th>
+                <th>-</th>
+            </tr>
+            {{#each files}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{name}}</td>
+                <td>{{size}}</td>
+                <td>{{type}}</td>
+                <td><a class="fmgr-btn" href="/deleteFileData?id={{id}}">delete</a></td>
+                <td><a class="fmgr-btn" href="/info?id={{id}}">info</a></td>
+                <td><a class="fmgr-btn" href="/downloadFile?id={{id}}">download</a></td>
+            </tr>
+            {{/each}}
+        </table>
+    {{/if}}
 </main>
