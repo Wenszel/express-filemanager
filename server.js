@@ -32,8 +32,6 @@ app.post('/handleUpload', function (req, res) {
             files.filetoupload.id = currentId;
             currentId++;
             uploadedFiles.push(files.filetoupload);
-            console.log(uploadedFiles)
-           
     }
         res.redirect("/filemanager");
     
@@ -48,7 +46,7 @@ app.get('/deleteFileData', function(req,res){
     });
 });
 app.get('/deleteFilesData', function(req,res){
-    uploadedFiles = []
+    uploadedFiles.splice(0, uploadedFiles.length)
     res.redirect("/filemanager");
 });
 app.get('/downloadFile',function(req,res){
