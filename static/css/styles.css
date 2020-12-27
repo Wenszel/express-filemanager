@@ -23,7 +23,7 @@ a:visited{
 aside{
     text-align: center;
     padding-top: 10px;
-    width: 150px;
+    width: 200px;
     height: 90vh;
     background-color: rgb(196, 196, 196);
     float: left;
@@ -39,4 +39,8 @@ td{
 }
 .fmgr-btn:visited{
     color:red;
+}
+.info{
+    display: flex;
+    flex-direction: column;
 }

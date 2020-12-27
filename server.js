@@ -21,12 +21,22 @@ app.post('/handleUpload', function (req, res) {
     form.keepExtensions = true;
     form.multiples = true;                  
     form.parse(req, function (err, fields, files) { 
-        files.filetoupload.forEach(file => {
-            file.id = currentId;
+        console.log(files)
+        if(Array.isArray(files.filetoupload)){
+            files.filetoupload.forEach(file => {
+                file.id = currentId;
+                currentId++;
+                uploadedFiles.push(file);
+            });
+        }else{
+            files.filetoupload.id = currentId;
             currentId++;
-            uploadedFiles.push(file);
-        });
+            uploadedFiles.push(files.filetoupload);
+            console.log(uploadedFiles)
+           
+    }
         res.redirect("/filemanager");
+    
     });
 });
 app.get('/deleteFileData', function(req,res){
@@ -36,6 +46,10 @@ app.get('/deleteFileData', function(req,res){
         }
         res.redirect("/filemanager");
     });
+});
+app.get('/deleteFilesData', function(req,res){
+    uploadedFiles = []
+    res.redirect("/filemanager");
 });
 app.get('/downloadFile',function(req,res){
     uploadedFiles.filter(i => {
@@ -54,12 +68,15 @@ app.get("/filemanager",function(req,res){
     res.render('filemanager.hbs', context);
 });
 app.get("/info",function(req,res){
-    uploadedFiles.filter(file => {
-        if(file.id == req.query.id){
-            res.render('info.hbs', file);
-        }
-    });
-    
+    if(req.query.id==null){
+        res.render('info.hbs', context);
+    }else{
+        uploadedFiles.filter(file => {
+            if(file.id == req.query.id){
+                res.render('info.hbs', file);
+            }
+        });
+    }
 });
 app.listen(PORT, function(){
     console.log("Aplikacja uruchamiona na porcie "+PORT);

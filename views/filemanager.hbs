@@ -1,9 +1,18 @@
 <aside>
-    <h1>filemanager</h1>
-    <a class="fmgr-btn" href="">Delete files data from table</a>
+    <h1>Filemanager</h1>
+    <a class="fmgr-btn" href="/deleteFilesData">Delete files data from table</a>
 </aside>
 <main>
     <table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>size</th>
+            <th>type</th>
+            <th>-</th>
+            <th>-</th>
+            <th>-</th>
+        </tr>
     {{#each files}}
     <tr>
         <td>{{id}}</td>
