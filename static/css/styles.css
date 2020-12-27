@@ -35,9 +35,11 @@ aside{
 main{
     margin: 20px;
 }
-td{
-    padding: 2px;
-    border: 1px solid black;
+table{
+    width: 80%;
+}
+th{
+    color: blue;
 }
 .fmgr-btn{
     color:red;
@@ -46,6 +48,7 @@ td{
     color:red;
 }
 .info{
+    margin-left: 10px;
     display: flex;
     flex-direction: column;
 }

@@ -26,7 +26,6 @@ app.post("/handleUpload", function (req, res) {
             files.filetoupload.forEach(file => {
                 file.id = currentId;
                 let extenstion = file.name.slice(file.name.lastIndexOf(".")+1, file.name.length);
-                console.log(extenstion)
                 if(extenstions.includes(extenstion)){
                     file.icon = "/gfx/"+extenstion+".png";
                 }else{
@@ -59,7 +58,8 @@ app.get("/deleteFileData", function(req,res){
     });
 });
 app.get("/deleteFilesData", function(req,res){
-    uploadedFiles.splice(0, uploadedFiles.length)
+    currentId = 1;
+    uploadedFiles.splice(0, uploadedFiles.length);
     res.redirect("/filemanager");
 });
 app.get("/downloadFile",function(req,res){
