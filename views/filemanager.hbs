@@ -1,12 +1,14 @@
 <aside>
     <h1>Filemanager</h1>
     <a class="fmgr-btn" href="/deleteFilesData">Delete files data from table</a>
+    <a href="https://icons8.com">Icons from icons8.com</a>
 </aside>
 <main>
     {{#if files}}
         <table>
             <tr>
                 <th>id</th>
+                <th>icon</th>
                 <th>name</th>
                 <th>size</th>
                 <th>type</th>
@@ -17,6 +19,7 @@
             {{#each files}}
             <tr>
                 <td>{{id}}</td>
+                <td><img src="{{icon}}" height="50px" width="50px"></td>
                 <td>{{name}}</td>
                 <td>{{size}}</td>
                 <td>{{type}}</td>
@@ -27,4 +30,5 @@
             {{/each}}
         </table>
     {{/if}}
+    
 </main>
