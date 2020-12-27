@@ -1,13 +1,19 @@
-<h1>filemanager</h1> 
-<table>
-{{#each files}}
-<tr>
-    <td>{{name}}</td>
-    <td>{{size}}</td>
-    <td>{{type}}</td>
-     <td><a>delete</a></td>
-     <td><a>info</a></td>
-     <td><a>download</a></td>
-</tr>
-{{/each}}
-</table>
+<aside>
+    <h1>filemanager</h1>
+    <a class="fmgr-btn" href="">Delete files data from table</a>
+</aside>
+<main>
+    <table>
+    {{#each files}}
+    <tr>
+        <td>{{id}}</td>
+        <td>{{name}}</td>
+        <td>{{size}}</td>
+        <td>{{type}}</td>
+        <td><a class="fmgr-btn" href="/deleteFileData?id={{id}}">delete</a></td>
+        <td><a class="fmgr-btn" href="/info?id={{id}}">info</a></td>
+        <td><a class="fmgr-btn" href="/downloadFile?id={{id}}">download</a></td>
+    </tr>
+    {{/each}}
+    </table>
+</main>

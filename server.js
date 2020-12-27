@@ -7,7 +7,7 @@ var context = {
     files: uploadedFiles,
     layout: 'main.hbs' 
 }
-
+var currentId = 1
 var hbs = require('express-handlebars');
 var formidable = require('formidable');
 app.set('views', path.join(__dirname, 'views'));
@@ -22,9 +22,26 @@ app.post('/handleUpload', function (req, res) {
     form.multiples = true;                  
     form.parse(req, function (err, fields, files) { 
         files.filetoupload.forEach(file => {
-            uploadedFiles.push(file)
+            file.id = currentId;
+            currentId++;
+            uploadedFiles.push(file);
         });
         res.redirect("/filemanager");
+    });
+});
+app.get('/deleteFileData', function(req,res){
+    uploadedFiles.filter((file, index) => {
+        if(file.id == req.query.id){
+            uploadedFiles.splice(index,1);
+        }
+        res.redirect("/filemanager");
+    });
+});
+app.get('/downloadFile',function(req,res){
+    uploadedFiles.filter(i => {
+        if(i.id == req.query.id){
+            res.download(i.path);
+        }
     });
 });
 app.get("/", function (req, res) { 
@@ -37,7 +54,12 @@ app.get("/filemanager",function(req,res){
     res.render('filemanager.hbs', context);
 });
 app.get("/info",function(req,res){
-    res.render('info.hbs', context);
+    uploadedFiles.filter(file => {
+        if(file.id == req.query.id){
+            res.render('info.hbs', file);
+        }
+    });
+    
 });
 app.listen(PORT, function(){
     console.log("Aplikacja uruchamiona na porcie "+PORT);

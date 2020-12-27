@@ -34,3 +34,9 @@ main{
 td{
     border: 1px solid black;
 }
+.fmgr-btn{
+    color:red;
+}
+.fmgr-btn:visited{
+    color:red;
+}
