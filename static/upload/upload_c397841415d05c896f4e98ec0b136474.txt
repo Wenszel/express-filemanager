@@ -1,0 +1,13 @@
+class sumaWTablicy():
+    def __init__(self, tablica):
+        self.tablica = tablica
+    def znajdzSume(self, number):
+        for i in self.tablica:
+            for j in range(0, len(self.tablica)):
+                if(self.tablica.index(i)==j):
+                    continue
+                elif(i+self.tablica[j] == number):
+                    wynik = [self.tablica.index(i), j]
+                    return wynik
+sumaWTablicy1 = sumaWTablicy([10,20,10,40,50,60,70])
+print(sumaWTablicy1.znajdzSume(30))
