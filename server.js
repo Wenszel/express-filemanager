@@ -12,7 +12,11 @@ var currentId = 1
 var hbs = require("express-handlebars");
 var formidable = require("formidable");
 app.set("views", path.join(__dirname, "views"));
-app.engine("hbs", hbs({ defaultLayout: "main.hbs" }));
+app.engine("hbs", hbs({ 
+    defaultLayout: "main.hbs",
+    extname: '.hbs', 
+    partialsDir: "views/partials"
+}));
 app.set("view engine", "hbs");
 app.use(express.static("static"));
 

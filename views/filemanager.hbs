@@ -16,16 +16,7 @@
                 <th>-</th>
             </tr>
             {{#each files}}
-            <tr>
-                <td>{{id}}</td>
-                <td><img src="{{icon}}" height="50px" width="50px"></td>
-                <td>{{name}}</td>
-                <td>{{size}}</td>
-                <td>{{type}}</td>
-                <td><a class="fmgr-btn" href="/deleteFileData?id={{id}}">delete</a></td>
-                <td><a class="fmgr-btn" href="/info?id={{id}}">info</a></td>
-                <td><a class="fmgr-btn" href="/downloadFile?id={{id}}">download</a></td>
-            </tr>
+                {{> infoPartial}}
             {{/each}}
         </table>
     
